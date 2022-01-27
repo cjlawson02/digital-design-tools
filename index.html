@@ -29,26 +29,50 @@
 <body class="mdl-demo mdl-color--grey-100 mdl-color-text--grey-700 mdl-base">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header mdl-layout__header--scroll mdl-color--primary">
-            <div class="mdl-layout--large-screen-only mdl-layout__header-row">
+            <div class="mdl-layout__header-row">
+                <h3>Digital Design Tools</h3>
             </div>
-            <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-                <h3>Digital Design Tools - dd.chrislawson.dev</h3>
+            <div class="mdl-layout__header-row">
+                <h6>dd.chrislawson.dev</h6>
             </div>
-            <div class="mdl-layout--large-screen-only mdl-layout__header-row">
-            </div>
+            <br>
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect mdl-color--primary-dark">
                 <a href="#home" class="mdl-layout__tab is-active">Home</a>
-                <a href="#features" class="mdl-layout__tab">About</a>
+                <a href="#about" class="mdl-layout__tab">About</a>
             </div>
         </header>
         <main class="mdl-layout__content">
             <div class="mdl-layout__tab-panel is-active" id="home">
                 <section class="section--center mdl-grid">
-                    <!-- Conversions -->
-                    <div class="mdl-card mdl-cell mdl-cell--3-col mdl-shadow--2dp">
+                    <!-- Resources -->
+                    <div
+                        class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp">
                         <div class="mdl-card__supporting-text">
-                            <h4>Decimal/Hex/Binary Conversion</h4>
-                            Convert between decimal/hexadecimal/binary on the fly. No more hitting submit buttons!
+                            <h4>Resources</h4>
+                            <ul>
+                                <li>Lab Manual: <a
+                                        href="https://docs.google.com/document/d/1KOF_W2SgGmaQrXw2hT4tScvi5KIcZDZVKOu4QV8AkGE/edit?usp=sharing"
+                                        target="_blank" rel="noopener noreferrer">On Google Docs</a></li>
+                                <li>OTTER RISCV Assembler Manual: <a
+                                        href="https://canvas.calpoly.edu/courses/66357/modules/items/1764797"
+                                        target="_blank" rel="noopener noreferrer">On Canvas</a></li>
+                                <li>RARS Download: <a
+                                        href="https://canvas.calpoly.edu/courses/66357/modules/items/1764801"
+                                        target="_blank" rel="noopener noreferrer">On Canvas</a></li>
+                                <li>Textbook: <a href="https://canvas.calpoly.edu/courses/66357/modules/items/1764796"
+                                        target="_blank" rel="noopener noreferrer">On Canvas</a></li>
+                                <li><a href="https://www.cl.cam.ac.uk/teaching/1112/ECAD+Arch/files/SystemVerilogCheatSheet.pdf"
+                                        target="_blank" rel="noopener noreferrer">SystemVerilog Cheat Sheet</a></li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- Conversions -->
+                    <div
+                        class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp">
+                        <div class="mdl-card__supporting-text">
+                            <h4>Base Conversion</h4>
+                            Convert between decimal, hexadecimal, and binary on the fly. No more hitting submit buttons!
                             <form action="#">
                                 <div class="mdl-textfield mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="text"
@@ -80,10 +104,11 @@
                         </div>
                     </div>
                     <!-- Minimum Bits -->
-                    <div class="mdl-card mdl-cell mdl-cell--3-col mdl-shadow--2dp">
+                    <div
+                        class="mdl-card mdl-cell mdl-cell--3-col  mdl-cell--4-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp">
                         <div class="mdl-card__supporting-text">
                             <h4>Minimum Bit Calculation</h4>
-                            Calculate the minimum number of bits to represent a decimal/hexadecimal number.
+                            Calculate the minimum number of bits to represent a decimal or a hexadecimal number.
                             <div class="mdl-grid">
                                 <form class="mdl-cell mdl-cell--5-col" action="#">
                                     <div class="mdl-textfield mdl-js-textfield">
@@ -110,7 +135,8 @@
                         </div>
                     </div>
                     <!-- Two's Complement -->
-                    <div class="mdl-card mdl-cell mdl-cell--3-col mdl-shadow--2dp">
+                    <div
+                        class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp">
                         <div class="mdl-card__supporting-text">
                             <h4>Two's Comp Calculation</h4>
                             Coming soon...
@@ -152,43 +178,16 @@
                             </form> -->
                         </div>
                     </div>
-
-                    <div class="mdl-card mdl-cell mdl-cell--3-col mdl-shadow--2dp">
-                        <div class="mdl-card__supporting-text">
-                            <h4>Resources</h4>
-                            <ul>
-                                <li>Lab Manual: <a
-                                        href="https://docs.google.com/document/d/1KOF_W2SgGmaQrXw2hT4tScvi5KIcZDZVKOu4QV8AkGE/edit?usp=sharing"
-                                        target="_blank" rel="noopener noreferrer">On
-                                        Google Docs</a></li>
-                                <li>OTTER RISCV Assembler Manual: <a
-                                        href="https://canvas.calpoly.edu/courses/66357/modules/items/1764797"
-                                        target="_blank" rel="noopener noreferrer">On
-                                        Canvas</a></li>
-                                <li>RARS Download: <a
-                                        href="https://canvas.calpoly.edu/courses/66357/modules/items/1764801"
-                                        target="_blank" rel="noopener noreferrer">On
-                                        Canvas</a></li>
-                                <li>Textbook: <a href="https://canvas.calpoly.edu/courses/66357/modules/items/1764796"
-                                        target="_blank" rel="noopener noreferrer">On
-                                        Canvas</a></li>
-                                <li><a href="https://www.cl.cam.ac.uk/teaching/1112/ECAD+Arch/files/SystemVerilogCheatSheet.pdf"
-                                        target="_blank" rel="noopener noreferrer">System
-                                        Verilog Cheat Sheet</a></li>
-
-                            </ul>
-                        </div>
-                    </div>
                 </section>
             </div>
-            <div class="mdl-layout__tab-panel" id="features">
+            <div class="mdl-layout__tab-panel" id="about">
                 <section class="section--center mdl-grid">
                     <div class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
                         <div class="mdl-card__supporting-text">
                             <h4>About</h4>
                             Created by Chris Lawson for CPE 233. Idea inspired by Patrick Jackson.
 
-                            <h5>Source Code</h5>
+                            <h6>Source Code</h6>
                             All source code is available at
                             <a href="https://github.com/Chris2fourlaw/digital-design-tools" target="_blank"
                                 rel="noopener noreferrer">my GitHub</a>.
@@ -197,11 +196,15 @@
                     </div>
                 </section>
             </div>
-            <footer class="mdl-mega-footer">
-                <div class="mdl-mega-footer--middle-section">
-                </div>
-            </footer>
         </main>
+        <footer class="mdl-mega-footer">
+            <div class="mdl-mega-footer--middle-section">
+                &copy Chris Lawson 2022 | Main site: <a href="https://chrislawson.dev" target="_blank"
+                    rel="noopener noreferrer">chrislawson.dev</a> | Source Code: <a
+                    href="https://github.com/Chris2fourlaw/digital-design-tools" target="_blank"
+                    rel="noopener noreferrer">GitHub</a>
+            </div>
+        </footer>
     </div>
     <a href="https://github.com/Chris2fourlaw/digital-design-tools" target="_blank" rel="noopener noreferrer"
         id="view-source"
