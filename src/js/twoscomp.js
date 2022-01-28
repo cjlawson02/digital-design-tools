@@ -6,8 +6,10 @@ function signedBinToDec(binary) {
 }
 
 function signedDecToBin(decimal, bits) {
-    let posBin = `${''.padStart(bits, '0')}${decimal.toString(2)}`;
-    if (decimal >= 0) return posBin.length < bits ? posBin : 'Not enough bits!';
+    let binConv = decimal.toString(2);
+    if (bits - binConv.length < 1) return 'Not enough bits!';
+    let posBin = `${''.padStart(bits - binConv.length, '0')}${binConv}`;
+    if (decimal >= 0) return posBin;
 
     return (decimal + Math.pow(2, bits)).toString(2);
 }
@@ -35,7 +37,8 @@ twosDecimal.addEventListener('keyup', () => {
         twosBinaryLabel.style.display = 'none';
 
         let result = parseInt(twosDecimal.value);
-        twosBinary.value = signedDecToBin(result, twosBits.value);
+        let bits = parseInt(twosBits.value);
+        twosBinary.value = signedDecToBin(result, bits);
         twosHexadecimal.value = result.toString(16).toUpperCase();
     } else if (twosDecimal.value[0] !== '-') {
         twosHexadecimal.value = '';
@@ -90,7 +93,11 @@ twosBits.addEventListener('keyup', () => {
     if (twosBits.value.length && twosDecimal.value.length && twosBitsPattern.test(twosBits.value)) {
         twosHexadecimalLabel.style.display = 'none';
         twosBinaryLabel.style.display = 'none';
-        twosBinary.value = signedDecToBin(twosDecimal.value, twosBits.value);
+
+        let result = parseInt(twosDecimal.value);
+        let bits = parseInt(twosBits.value);
+        twosBinary.value = signedDecToBin(result, bits);
+        twosHexadecimal = parseInt(twosBinary.value, 2).toString(16);
     } else {
         twosDecimal.value = '';
         twosDecimalLabel.style.display = 'block';
