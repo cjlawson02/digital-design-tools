@@ -20,7 +20,6 @@ function commitBitByte(bits, bytes) {
 function processBitByte(result) {
     let bits = Math.floor(Math.log2(result)) + 1;
     commitBitByte(bits, Math.ceil(bits / 8));
-    return bits;
 }
 
 

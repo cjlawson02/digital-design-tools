@@ -19,9 +19,9 @@ let twosDecimal = document.getElementById('twosDecimal');
 let twosDecimalLabel = document.getElementById('twosDecimalLabel');
 let twosDecimalPattern = new RegExp(twosDecimal.getAttribute('pattern'));
 
-let twosHexadecimal = document.getElementById('twosHexadecimal');
-let twosHexadecimalLabel = document.getElementById('twosHexadecimalLabel');
-let twosHexadecimalPattern = new RegExp(twosHexadecimal.getAttribute('pattern'));
+// let twosHexadecimal = document.getElementById('twosHexadecimal');
+// let twosHexadecimalLabel = document.getElementById('twosHexadecimalLabel');
+// let twosHexadecimalPattern = new RegExp(twosHexadecimal.getAttribute('pattern'));
 
 let twosBinary = document.getElementById('twosBinary');
 let twosBinaryLabel = document.getElementById('twosBinaryLabel');
@@ -33,57 +33,57 @@ let twosBitsPattern = new RegExp(twosBits.getAttribute('pattern'));
 
 twosDecimal.addEventListener('keyup', () => {
     if (twosDecimal.value.length && twosBits.value.length && twosDecimalPattern.test(twosDecimal.value)) {
-        twosHexadecimalLabel.style.display = 'none';
+        // twosHexadecimalLabel.style.display = 'none';
         twosBinaryLabel.style.display = 'none';
 
         let result = parseInt(twosDecimal.value);
         let bits = parseInt(twosBits.value);
         twosBinary.value = signedDecToBin(result, bits);
-        twosHexadecimal.value = result.toString(16).toUpperCase();
+        // let hex = result.toString(16).toUpperCase();
     } else if (twosDecimal.value[0] !== '-') {
-        twosHexadecimal.value = '';
-        twosHexadecimalLabel.style.display = 'block';
+        // twosHexadecimal.value = '';
+        // twosHexadecimalLabel.style.display = 'block';
         twosBinary.value = '';
         twosBinaryLabel.style.display = 'block';
     }
 });
 
-twosHexadecimal.addEventListener('keyup', () => {
-    if (twosHexadecimal.value.length && twosHexadecimalPattern.test(twosHexadecimal.value)) {
-        twosDecimalLabel.style.display = 'none';
-        twosBinaryLabel.style.display = 'none';
-        twosBitsLabel.style.display = 'none';
+// twosHexadecimal.addEventListener('keyup', () => {
+//     if (twosHexadecimal.value.length && twosHexadecimalPattern.test(twosHexadecimal.value)) {
+//         twosDecimalLabel.style.display = 'none';
+//         twosBinaryLabel.style.display = 'none';
+//         twosBitsLabel.style.display = 'none';
 
-        let binResult = parseInt(twosHexadecimal.value, 16).toString(2);
-        twosBinary.value = (twosHexadecimal.value.length > 1 && twosHexadecimal.value[0] === '0') ? `0${binResult}` : binResult;
-        twosDecimal.value = signedBinToDec(twosBinary.value);
-        twosBits.value = twosBinary.value.length;
-    } else {
-        twosDecimal.value = '';
-        twosDecimalLabel.style.display = 'block';
-        twosBinary.value = '';
-        twosBinaryLabel.style.display = 'block';
-        twosBits.value = '';
-        twosBitsLabel.style.display = 'block';
-    }
-});
+//         let binResult = parseInt(twosHexadecimal.value, 16).toString(2);
+//         twosBinary.value = (twosHexadecimal.value.length > 1 && twosHexadecimal.value[0] === '0') ? `0${binResult}` : binResult;
+//         twosDecimal.value = signedBinToDec(twosBinary.value);
+//         twosBits.value = twosBinary.value.length;
+//     } else {
+//         twosDecimal.value = '';
+//         twosDecimalLabel.style.display = 'block';
+//         twosBinary.value = '';
+//         twosBinaryLabel.style.display = 'block';
+//         twosBits.value = '';
+//         twosBitsLabel.style.display = 'block';
+//     }
+// });
 
 twosBinary.addEventListener('keyup', () => {
     if (twosBinary.value.length && twosBinaryPattern.test(twosBinary.value)) {
         twosDecimalLabel.style.display = 'none';
-        twosHexadecimalLabel.style.display = 'none';
+        // twosHexadecimalLabel.style.display = 'none';
         twosBitsLabel.style.display = 'none';
 
         twosBits.value = twosBinary.value.length;
 
         twosDecimal.value = signedBinToDec(twosBinary.value);
-        let hexResult = parseInt(twosBinary.value, 2).toString(16).toUpperCase();
-        twosHexadecimal.value = twosBinary.value[0] === '0' ? `0${hexResult}` : hexResult;
+        // let hexResult = parseInt(twosBinary.value, 2).toString(16).toUpperCase();
+        // twosHexadecimal.value = twosBinary.value[0] === '0' ? `0${hexResult}` : hexResult;
     } else {
         twosDecimal.value = '';
         twosDecimalLabel.style.display = 'block';
-        twosHexadecimal.value = '';
-        twosHexadecimalLabel.style.display = 'block';
+        // twosHexadecimal.value = '';
+        // twosHexadecimalLabel.style.display = 'block';
         twosBits.value = '';
         twosBitsLabel.style.display = 'block';
     }
@@ -91,18 +91,18 @@ twosBinary.addEventListener('keyup', () => {
 
 twosBits.addEventListener('keyup', () => {
     if (twosBits.value.length && twosDecimal.value.length && twosBitsPattern.test(twosBits.value)) {
-        twosHexadecimalLabel.style.display = 'none';
+        // twosHexadecimalLabel.style.display = 'none';
         twosBinaryLabel.style.display = 'none';
 
         let result = parseInt(twosDecimal.value);
         let bits = parseInt(twosBits.value);
         twosBinary.value = signedDecToBin(result, bits);
-        twosHexadecimal = parseInt(twosBinary.value, 2).toString(16);
+        // twosHexadecimal = parseInt(twosBinary.value, 2).toString(16);
     } else {
         twosDecimal.value = '';
         twosDecimalLabel.style.display = 'block';
-        twosHexadecimal.value = '';
-        twosHexadecimalLabel.style.display = 'block';
+        // twosHexadecimal.value = '';
+        // twosHexadecimalLabel.style.display = 'block';
         twosBinary.value = '';
         twosBinaryLabel.style.display = 'block';
     }
