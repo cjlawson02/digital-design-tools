@@ -1,19 +1,3 @@
-/**
- * Copyright 2015 Google Inc. All Rights Reserved.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 html,
 body {
   font-family: "Roboto", "Helvetica", sans-serif;
@@ -21,42 +5,25 @@ body {
   padding: 0;
 }
 
-.mdl-demo .mdl-layout__header {
-  padding-top: 20px;
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #1e1e1e;
+  }
 }
 
-.mdl-demo .mdl-layout__header-row {
+.mdl-layout__header-row {
   padding-left: 16px;
-  height: auto;
 }
 
-.mdl-demo .mdl-layout__header-row h3,
-.mdl-layout__header-row h6 {
-  margin: 0;
-}
-
-.mdl-demo .mdl-layout.is-small-screen .mdl-layout__header-row h3 {
-  margin: 0;
-}
-
-.mdl-demo .mdl-layout__tab-bar-button {
+.mdl-layout__tab-bar-button {
   display: none;
 }
 
-.mdl-demo .mdl-layout.is-small-screen .mdl-layout__tab-bar .mdl-button {
+.mdl-layout.is-small-screen .mdl-layout__tab-bar .mdl-button {
   display: none;
 }
 
-.mdl-demo .mdl-layout:not(.is-small-screen) .mdl-layout__tab-bar,
-.mdl-demo .mdl-layout:not(.is-small-screen) .mdl-layout__tab-bar-container {
-  overflow: visible;
-}
-
-.mdl-demo .mdl-layout__tab-bar-container {
-  height: 64px;
-}
-
-.mdl-demo .mdl-layout__tab-bar {
+.mdl-layout__tab-bar {
   padding: 0;
   padding-left: 16px;
   box-sizing: border-box;
@@ -64,128 +31,6 @@ body {
   width: 100%;
 }
 
-.mdl-demo .mdl-layout__tab-bar .mdl-layout__tab {
-  height: 64px;
-  line-height: 64px;
-}
-
-.mdl-demo .mdl-layout__tab-bar .mdl-layout__tab.is-active::after {
-  background-color: white;
-  height: 4px;
-}
-
-.mdl-demo main > .mdl-layout__tab-panel {
-  padding: 8px;
-  padding-top: 48px;
-}
-
-.mdl-demo .mdl-card {
-  height: auto;
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-flex-direction: column;
-  -ms-flex-direction: column;
-  flex-direction: column;
-}
-
-.mdl-demo .mdl-card > * {
-  height: auto;
-}
-
-.mdl-demo .mdl-card .mdl-card__supporting-text {
-  margin: auto;
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  color: inherit;
-}
-
-.mdl-demo.mdl-demo .mdl-card__supporting-text h4 {
-  margin-top: 10px;
-  margin-bottom: 20px;
-  line-height: 0;
-}
-
-.mdl-demo .mdl-layout__content section:not(:last-of-type) {
-  position: relative;
-  margin-bottom: 48px;
-}
-
-.mdl-demo #about section.section--center {
-  max-width: 620px;
-}
-
-.mdl-demo section > header {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-align-items: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-justify-content: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.mdl-demo section > .section__play-btn {
-  min-height: 200px;
-}
-
-.mdl-demo section > button {
-  position: absolute;
-  z-index: 99;
-  top: 8px;
-  right: 8px;
-}
-
-.mdl-demo section .section__text {
-  -webkit-flex-grow: 1;
-  -ms-flex-positive: 1;
-  flex-grow: 1;
-  -webkit-flex-shrink: 0;
-  -ms-flex-negative: 0;
-  flex-shrink: 0;
-  padding-top: 8px;
-}
-
-.mdl-demo section .section__text h5 {
-  font-size: inherit;
-  margin: 0;
-  margin-bottom: 0.5em;
-}
-
-.mdl-demo section .section__text a {
-  text-decoration: none;
-}
-
-.mdl-demo section.section--footer {
-  flex-shrink: 0;
-  padding: 64px 0;
-}
-
-.mdl-demo section.section--center .section__text:not(:last-child) {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.13);
-}
-
-.mdl-demo .mdl-card .mdl-card__supporting-text > h3:first-child {
-  margin-bottom: 24px;
-}
-
-.mdl-demo .mdl-layout__tab-panel:not(#overview) {
-  background-color: white;
-}
-
-.mdl-demo #about section {
-  margin-bottom: 72px;
-}
-
-.mdl-demo #about h4,
-#about h6 {
-  margin-top: 24px;
-  margin-bottom: 5px;
-}
-
-.mdl-demo .mdl-menu__container {
-  z-index: 99;
+.mdl-card__title {
+  padding-bottom: 0px;
 }
