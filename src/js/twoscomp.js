@@ -7,7 +7,9 @@ function signedBinToDec(binary) {
 
 function signedDecToBin(decimal, bits) {
     let binConv = decimal.toString(2);
-    if (bits - binConv.length < 1) return 'Not enough bits!';
+    if (decimal >= 0 && bits - binConv.length < 1) return 'Not enough bits!';
+    if (decimal < 0 && bits - binConv.length < 0 && Math.log2(Math.abs(decimal)) % 1 !== 0) return 'Not enough bits!';
+
     let posBin = `${''.padStart(bits - binConv.length, '0')}${binConv}`;
     if (decimal >= 0) return posBin;
 
