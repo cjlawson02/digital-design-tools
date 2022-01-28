@@ -11,25 +11,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
     <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.teal-pink.min.css">
     <link rel="stylesheet" href="src/css/style.css">
-    <style>
-        #view-source {
-            position: fixed;
-            display: block;
-            right: 0;
-            bottom: 0;
-            margin-right: 40px;
-            margin-bottom: 40px;
-            z-index: 900;
-        }
-    </style>
 </head>
 
 <body class="mdl-demo mdl-base">
     <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
         <header class="mdl-layout__header">
             <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title">Digital Design Tools - dd.chrislawson.dev</span>
-                <div class="mdl-layout-spacer"></div>
+                <span class="mdl-layout-title">Digital Design Tools | dd.chrislawson.dev</span>
             </div>
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
                 <a href="#home" class="mdl-layout__tab is-active">Home</a>
@@ -51,12 +39,11 @@
                                         href="https://docs.google.com/document/d/1KOF_W2SgGmaQrXw2hT4tScvi5KIcZDZVKOu4QV8AkGE/edit?usp=sharing"
                                         target="_blank" rel="noopener noreferrer">On Google Docs</a></li>
                                 <li>OTTER RISCV Assembler Manual: <a
-                                        href="https://canvas.calpoly.edu/courses/66357/modules/items/1764797"
+                                        href="https://canvas.calpoly.edu/courses/66357/files/6381903" target="_blank"
+                                        rel="noopener noreferrer">On Canvas</a></li>
+                                <li>RARS Download: <a href="https://canvas.calpoly.edu/courses/66357/files/6061641"
                                         target="_blank" rel="noopener noreferrer">On Canvas</a></li>
-                                <li>RARS Download: <a
-                                        href="https://canvas.calpoly.edu/courses/66357/modules/items/1764801"
-                                        target="_blank" rel="noopener noreferrer">On Canvas</a></li>
-                                <li>Textbook: <a href="https://canvas.calpoly.edu/courses/66357/modules/items/1764796"
+                                <li>Textbook: <a href="https://canvas.calpoly.edu/courses/66357/files/6061638"
                                         target="_blank" rel="noopener noreferrer">On Canvas</a></li>
                                 <li><a href="https://www.cl.cam.ac.uk/teaching/1112/ECAD+Arch/files/SystemVerilogCheatSheet.pdf"
                                         target="_blank" rel="noopener noreferrer">SystemVerilog Cheat Sheet</a></li>
@@ -81,7 +68,6 @@
                                         for="convDecimal">Decimal...</label>
                                     <span class="mdl-textfield__error">Input is not a valid integer!</span>
                                 </div>
-                                <br>
                                 <div class="mdl-textfield mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="text" pattern="^[0-9a-fA-F]+$"
                                         id="convHexadecimal">
@@ -91,7 +77,6 @@
                                         (don't
                                         include 0x)!</span>
                                 </div>
-                                <br>
                                 <div class="mdl-textfield mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="text" pattern="^[01]{0,53}$"
                                         id="convBinary">
@@ -106,10 +91,10 @@
                     <div
                         class="mdl-card mdl-cell mdl-cell--3-col mdl-cell--4-col-tablet mdl-cell--12-col-phone mdl-shadow--2dp">
                         <div class="mdl-card__title">
-                            <h2 class="mdl-card__title-text">Minimum Bit Calculation</h2>
+                            <h2 class="mdl-card__title-text">Minimum Bit/Byte Calculation</h2>
                         </div>
                         <div class="mdl-card__supporting-text">
-                            Calculate the minimum number of bits to represent a decimal or a hexadecimal number.
+                            Calculate the minimum number of bits and bytes to represent an unsigned number.
                             <form action="#">
                                 <div class="mdl-textfield mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="text"
@@ -119,7 +104,6 @@
                                         for="minDecimal">Decimal...</label>
                                     <span class="mdl-textfield__error">Input is not a valid integer!</span>
                                 </div>
-                                <br>
                                 <div class="mdl-textfield mdl-js-textfield">
                                     <input class="mdl-textfield__input" type="text" pattern="^[0-9a-fA-F]+$"
                                         id="minHexadecimal">
@@ -129,8 +113,15 @@
                                         (don't
                                         include 0x)!</span>
                                 </div>
+                                <div class="mdl-textfield mdl-js-textfield">
+                                    <input class="mdl-textfield__input" type="text" pattern="^[01]{0,53}$"
+                                        id="minBinary">
+                                    <label class="mdl-textfield__label" id="minBinaryLabel"
+                                        for="minBinary">Binary...</label>
+                                    <span class="mdl-textfield__error">Input is not a valid binary number!</span>
+                                </div>
                             </form>
-                            <h2 id="minBits"></h2>
+                            <h3 id="minBits"></h3>
                         </div>
                     </div>
                     <!-- Two's Complement -->
@@ -140,79 +131,83 @@
                             <h2 class="mdl-card__title-text">Two's Comp Calculation</h2>
                         </div>
                         <div class="mdl-card__supporting-text">
-                            Coming soon...
-                            <!-- Convert decimal to signed binary/hexadecimal and vice-versa. 32-bit limit.
-                                <form action="#">
-                                    <div class="mdl-textfield mdl-js-textfield">
-                                        <input class="mdl-textfield__input" type="text"
-                                            pattern="^[1-9]$|^[1-2][0-9]$|^3[0-2]$" id="twosBits">
-                                        <label class="mdl-textfield__label" id="twosBitsLabel" for="twosBits"># of
-                                            Bits...</label>
-                                        <span class="mdl-textfield__error">Input is not a valid number of bits!</span>
-                                    </div>
-                                    <div class="mdl-textfield mdl-js-textfield">
-                                        <input class="mdl-textfield__input" type="text"
-                                            pattern="^-?([0-9]{1,9}|[0-1][0-9]{9}|20[0-9]{8}|21[0-3][0-9]{7}|214[0-6][0-9]{6}|2147[0-3][0-9]{5}|21474[0-7][0-9]{4}|214748[0-2][0-9]{3}|2147483[0-5][0-9]{2}|21474836[0-3][0-9]|214748364[0-7])$|^(-2147483648)$"
-                                            id="twosDecimal">
-                                        <label class="mdl-textfield__label" id="twosDecimalLabel"
-                                            for="twosDecimal">Decimal...</label>
-                                        <span class="mdl-textfield__error">Input is not a valid integer!</span>
-                                    </div>
-                                    <br>
-                                    <div class="mdl-textfield mdl-js-textfield">
-                                        <input class="mdl-textfield__input" type="text" pattern="^[0-9a-fA-F]+$"
-                                            id="twosHexadecimal">
-                                        <label class="mdl-textfield__label" id="twosHexadecimalLabel"
-                                            for="twosHexadecimal">Hexadecimal...</label>
-                                        <span class="mdl-textfield__error">Input is not a valid hexadecimal number
-                                            (don't include 0x)!</span>
-                                    </div>
-                                    <br>
-                                    <div class="mdl-textfield mdl-js-textfield">
-                                        <input class="mdl-textfield__input" type="text" pattern="^[01]{0,32}$"
-                                            id="twosBinary">
-                                        <label class="mdl-textfield__label" id="twosBinaryLabel"
-                                            for="twosBinary">Binary...</label>
-                                        <span class="mdl-textfield__error">Input is not a valid signed 32-bit binary
-                                            number!</span>
-                                    </div>
-                                </form> -->
+                            Convert decimal to signed binary/hexadecimal and vice-versa. 32-bit limit.
+                            <form action="#">
+                                <div class="mdl-textfield mdl-js-textfield">
+                                    <input class="mdl-textfield__input" type="text"
+                                        pattern="^[1-9]$|^[1-2][0-9]$|^3[0-2]$" id="twosBits">
+                                    <label class="mdl-textfield__label" id="twosBitsLabel" for="twosBits"># of
+                                        Bits...</label>
+                                    <span class="mdl-textfield__error">Input is not a valid number of bits!</span>
+                                </div>
+                                <div class="mdl-textfield mdl-js-textfield">
+                                    <input class="mdl-textfield__input" type="text"
+                                        pattern="^-?([0-9]{1,9}|[0-1][0-9]{9}|20[0-9]{8}|21[0-3][0-9]{7}|214[0-6][0-9]{6}|2147[0-3][0-9]{5}|21474[0-7][0-9]{4}|214748[0-2][0-9]{3}|2147483[0-5][0-9]{2}|21474836[0-3][0-9]|214748364[0-7])$|^(-2147483648)$"
+                                        id="twosDecimal">
+                                    <label class="mdl-textfield__label" id="twosDecimalLabel"
+                                        for="twosDecimal">Decimal...</label>
+                                    <span class="mdl-textfield__error">Input is not a valid integer!</span>
+                                </div>
+
+                                <div class="mdl-textfield mdl-js-textfield">
+                                    <input class="mdl-textfield__input" type="text" pattern="^[0-9a-fA-F]+$"
+                                        id="twosHexadecimal">
+                                    <label class="mdl-textfield__label" id="twosHexadecimalLabel"
+                                        for="twosHexadecimal">Hexadecimal...</label>
+                                    <span class="mdl-textfield__error">Input is not a valid hexadecimal number
+                                        (don't include 0x)!</span>
+                                </div>
+
+                                <div class="mdl-textfield mdl-js-textfield">
+                                    <input class="mdl-textfield__input" type="text" pattern="^[01]{0,32}$"
+                                        id="twosBinary">
+                                    <label class="mdl-textfield__label" id="twosBinaryLabel"
+                                        for="twosBinary">Binary...</label>
+                                    <span class="mdl-textfield__error">Input is not a valid signed 32-bit binary
+                                        number!</span>
+                                </div>
+                            </form>
                         </div>
                     </div>
                 </div>
             </section>
             <section class="mdl-layout__tab-panel" id="about">
                 <div class="mdl-grid">
-                    <div class="mdl-card mdl-cell mdl-cell--8-col mdl-shadow--2dp">
+                    <div class="mdl-card mdl-cell mdl-cell--12-col mdl-shadow--2dp">
                         <div class="mdl-card__title">
                             <h2 class="mdl-card__title-text">About</h2>
                         </div>
                         <div class="mdl-card__supporting-text">
                             Created by Chris Lawson for CPE 233. Idea inspired by Patrick Jackson.
-
+                            <br><br>
+                            The goal of Digital Design Tools is to provide quick access to commonly used resources and
+                            valuable tools for SW and HW projects in Winter 2022 CPE 233-09. If there is a tool you'd
+                            like to be implemented, feel free to do one of the following:
+                            <ul>
+                                <li>Make a PR on the GitHub (preferred)</li>
+                                <li>Slack me in the CPE 233 workspace</li>
+                                <li>Create an issue on GitHub (least preferred)</li>
+                            </ul>
                             <h6>Source Code</h6>
                             All source code is available at
                             <a href="https://github.com/Chris2fourlaw/digital-design-tools" target="_blank"
                                 rel="noopener noreferrer">my GitHub</a>.
-                            Feel free to fork and contribute!
+                            Please feel free to fork and contribute!
                         </div>
                     </div>
                 </div>
             </section>
         </main>
         <footer class="mdl-mini-footer">
-            <div class="mdl-mini-footer--middle-section">
-                &copy Chris Lawson 2022 | Main site: <a href="https://chrislawson.dev" target="_blank"
-                    rel="noopener noreferrer">chrislawson.dev</a> | Source Code: <a
-                    href="https://github.com/Chris2fourlaw/digital-design-tools" target="_blank"
-                    rel="noopener noreferrer">GitHub</a>
+            <div class="mdl-mini-footer--left-section">
+                &copy Chris Lawson 2022 | <a href="https://chrislawson.dev" target="_blank"
+                    rel="noopener noreferrer">chrislawson.dev</a>
             </div>
+            <div class="mdl-mini-footer--right-section">Source Code: <a
+                    href="https://github.com/Chris2fourlaw/digital-design-tools" target="_blank"
+                    rel="noopener noreferrer">GitHub</a></div>
         </footer>
     </div>
-    <a href="https://github.com/Chris2fourlaw/digital-design-tools" target="_blank" rel="noopener noreferrer"
-        id="view-source"
-        class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-color--accent mdl-color-text--accent-contrast">View
-        Source</a>
     <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
     <script src="src/js/conversions.js"></script>
     <script src="src/js/minbit.js"></script>

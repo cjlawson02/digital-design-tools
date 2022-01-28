@@ -1,5 +1,4 @@
 // Two's comp - WIP
-
 function signedBinToDec(binary) {
     let binaryStr = binary.toString();
     return parseInt(binaryStr[0] === '1' ?
@@ -7,18 +6,10 @@ function signedBinToDec(binary) {
 }
 
 function signedDecToBin(decimal, bits) {
-    let binary = decimal.toString(2);
+    let posBin = `${''.padStart(bits, '0')}${decimal.toString(2)}`;
+    if (decimal >= 0) return posBin.length < bits ? posBin : 'Not enough bits!';
 
-    if (decimal >= 0) return binary;
-
-    if (!bits) bits = 0;
-    else bits = parseInt(bits);
-
-    while (decimal < (-(1 << (bits - 1))) || decimal > ((1 << (bits - 1)) - 1)) {
-        bits++;
-    }
-
-    return ~(((decimal) - 1) | ~((1 << bits) - 1)).toString(2);
+    return (decimal + Math.pow(2, bits)).toString(2);
 }
 
 
@@ -39,45 +30,43 @@ let twosBitsLabel = document.getElementById('twosBitsLabel');
 let twosBitsPattern = new RegExp(twosBits.getAttribute('pattern'));
 
 twosDecimal.addEventListener('keyup', () => {
-    if (twosDecimalPattern.test(twosDecimal.value)) {
+    if (twosDecimal.value.length && twosBits.value.length && twosDecimalPattern.test(twosDecimal.value)) {
         twosHexadecimalLabel.style.display = 'none';
         twosBinaryLabel.style.display = 'none';
 
         let result = parseInt(twosDecimal.value);
         twosBinary.value = signedDecToBin(result, twosBits.value);
-        twosHexadecimal.value = twosBinary.value.toString(16).toUpperCase();
+        twosHexadecimal.value = result.toString(16).toUpperCase();
     } else if (twosDecimal.value[0] !== '-') {
         twosHexadecimal.value = '';
-        twosBinary.value = '';
-        twosBits.value = '';
         twosHexadecimalLabel.style.display = 'block';
+        twosBinary.value = '';
         twosBinaryLabel.style.display = 'block';
-        twosBitsLabel.style.display = 'block';
     }
 });
 
 twosHexadecimal.addEventListener('keyup', () => {
-    if (twosHexadecimalPattern.test(twosHexadecimal.value)) {
+    if (twosHexadecimal.value.length && twosHexadecimalPattern.test(twosHexadecimal.value)) {
         twosDecimalLabel.style.display = 'none';
         twosBinaryLabel.style.display = 'none';
         twosBitsLabel.style.display = 'none';
 
-        let result = parseInt(twosHexadecimal.value, 16);
-        twosDecimal.value = signedBinToDec(result.toString(2));
-        twosBinary.value = result.toString(2);
+        let binResult = parseInt(twosHexadecimal.value, 16).toString(2);
+        twosBinary.value = (twosHexadecimal.value.length > 1 && twosHexadecimal.value[0] === '0') ? `0${binResult}` : binResult;
+        twosDecimal.value = signedBinToDec(twosBinary.value);
         twosBits.value = twosBinary.value.length;
     } else {
         twosDecimal.value = '';
-        twosBinary.value = '';
-        twosBits.value = '';
         twosDecimalLabel.style.display = 'block';
+        twosBinary.value = '';
         twosBinaryLabel.style.display = 'block';
+        twosBits.value = '';
         twosBitsLabel.style.display = 'block';
     }
 });
 
 twosBinary.addEventListener('keyup', () => {
-    if (twosBinaryPattern.test(twosBinary.value)) {
+    if (twosBinary.value.length && twosBinaryPattern.test(twosBinary.value)) {
         twosDecimalLabel.style.display = 'none';
         twosHexadecimalLabel.style.display = 'none';
         twosBitsLabel.style.display = 'none';
@@ -85,18 +74,29 @@ twosBinary.addEventListener('keyup', () => {
         twosBits.value = twosBinary.value.length;
 
         twosDecimal.value = signedBinToDec(twosBinary.value);
-        twosHexadecimal.value = parseInt(twosBinary.value, 2).toString(16).toUpperCase();
+        let hexResult = parseInt(twosBinary.value, 2).toString(16).toUpperCase();
+        twosHexadecimal.value = twosBinary.value[0] === '0' ? `0${hexResult}` : hexResult;
     } else {
         twosDecimal.value = '';
-        twosHexadecimal.value = '';
-        twosBits.value = '';
         twosDecimalLabel.style.display = 'block';
+        twosHexadecimal.value = '';
         twosHexadecimalLabel.style.display = 'block';
+        twosBits.value = '';
         twosBitsLabel.style.display = 'block';
     }
 });
 
 twosBits.addEventListener('keyup', () => {
-    if (twosBits.value.length && twosBitsPattern.test(twosBits.value)) return;
-    twosBits.value = null;
+    if (twosBits.value.length && twosDecimal.value.length && twosBitsPattern.test(twosBits.value)) {
+        twosHexadecimalLabel.style.display = 'none';
+        twosBinaryLabel.style.display = 'none';
+        twosBinary.value = signedDecToBin(twosDecimal.value, twosBits.value);
+    } else {
+        twosDecimal.value = '';
+        twosDecimalLabel.style.display = 'block';
+        twosHexadecimal.value = '';
+        twosHexadecimalLabel.style.display = 'block';
+        twosBinary.value = '';
+        twosBinaryLabel.style.display = 'block';
+    }
 });
